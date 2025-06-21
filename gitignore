@@ -1,0 +1,7 @@
+tf-env/
+__pycache__/
+*.pkl
+*.joblib
+*.pyc
+.DS_Store
+.env
