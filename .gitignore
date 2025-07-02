@@ -1,1 +1,20 @@
 tf-env/ 
+
+# Ignorar el entorno virtual
+venv/
+
+# Archivos de configuración de Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Archivos de logs y caché
+*.log
+.DS_Store
+
+# Configuración de entornos en VS Code
+.vscode/
+
+# Dependencias (se regeneran con requirements.txt)
+Pipfile
+Pipfile.lock
