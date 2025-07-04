@@ -32,7 +32,7 @@ def main():
     _patch_use_label_encoder(model)
 
     print(f"Reading input data from {input_path} ...")
-    df = pd.read_csv(input_path)
+    df = pd.read_csv(input_path).head(100)  # Solo las primeras 100 filas
 
     print("Running inference ...")
     preds = predict_model(model, data=df, verbose=False)
@@ -40,11 +40,11 @@ def main():
     print(f"Saving raw predictions to {output_path} ...")
     preds.to_csv(output_path, index=False)
 
-    # Agregar columna legible
-    preds["Predicción"] = preds["prediction_label"].map({0: "No llueve", 1: "Llueve"})
+    # Agregar columna legible usando 'Label', no 'prediction_label'
+    preds["Predicción"] = preds["Label"].map({0: "No llueve", 1: "Llueve"})
     preds.to_csv(output_readable, index=False)
 
-    print(f"✅ También se generó {output_readable} con etiquetas legibles.")
+    print(f"También se generó {output_readable} con etiquetas legibles.")
     print(preds["Predicción"].value_counts())
 
 
